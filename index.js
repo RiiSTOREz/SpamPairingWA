@@ -38,13 +38,13 @@ async function KleeProject() {
     });
     try {
         // Ask for phone number
-        const phoneNumber = await question(color + 'Target : ' + xColor);
+        const phoneNumber = await question(color + 'Masukin No Target: ' + xColor);
         
         // Request the desired number of pairing codes
-        const KleeCodes = parseInt(await question(color + 'Total spam : '+ xColor));
+        const KleeCodes = parseInt(await question(color + 'Masukin Jumlah Spam: '+ xColor));
 
         if (isNaN(KleeCodes) || KleeCodes <= 0) {
-            console.log('example : 20.');
+            console.log('example : 1000.');
             return;
         }
 
@@ -53,7 +53,7 @@ async function KleeProject() {
             try {
                 let code = await KleeBotInc.requestPairingCode(phoneNumber);
                 code = code?.match(/.{1,4}/g)?.join("-") || code;
-                console.log(color + `Succes Spam Pairing Code - Number : ${phoneNumber} from : [${i + 1}/${KleeCodes}]`+ xColor);
+                console.log(color + `Sukses Mengirim Spam Ke ${phoneNumber} Total Spam: [${i + 1}/${KleeCodes}]`+ xColor);
             } catch (error) {
                 console.error('Error:', error.message);
             }
@@ -64,20 +64,18 @@ async function KleeProject() {
 
     return KleeBotInc;
 }
-console.log(color + `Running... spam-pairing-wa
-=========================
+console.log(color + `
+❏=========================❏
  • SPAM PAIRING CODE WA
  • by RIISTORE ID
  • JANGAN DI SALAH GUNAKAN
-=========================
-┏❐ 
-┃ [ IKUTI INTRUKSI INI SEBELUM MULAI ]
-┃
-┃⭔ NOMOR TARGET ( 62xxxxxxx )
-┃⭔ JUMLAH SPAM ( 1-1000 )
-┃
-┃ [ THIS TOOL CAN ONLY BE USED ON NUMBER +62 ]
-┗❐ 
-=========================` + xColor);
+❏=========================❏
+[ IKUTI INTRUKSI INI SEBELUM MULAI ]
+⭔ NOMOR TARGET ( 62xxxxxxx )
+⭔ JUMLAH SPAM ( 1-1000 )
+
+[ THIS TOOL CAN ONLY BE USED ON NUMBER 62 ]
+⟬█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█⟭
+❏=========================❏` + xColor);
 
 KleeProject();
